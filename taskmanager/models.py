@@ -7,7 +7,7 @@ class Category(db.Model):
     # sets string length max to 25, must be unique, can't be empty/blank
     category_name = db.Column(db.String(25), unique=True, nullable=False)
     # no Column used so invisible. Targets the Task table
-    # backref targets itself
+    # backref targets itself - deleting the category deletes related tasks
     # cascade all, delete - finds all related tasks and deletes them
     # lazy, when query database for category it should find all tasks linked
     tasks = db.relationship(
